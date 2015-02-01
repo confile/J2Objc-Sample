@@ -124,7 +124,8 @@ Go to “Add files to NumberIncrementer” again and locate number-incrementer-s
 
 You also need to install j2objc. Go to [github.com/google/j2objc/releases](https://github.com/google/j2objc/releases) and download the latest release of j2objc.zip. Put the contents of this zip file at /usr/local/j2objc (you can use a different directory if you change the path in the instructions below). Now open up the Build Settings for the NumberIncrementer Xcode project and make the following changes:
 
-* **Other Linker Flags:** -L/usr/local/j2objc/lib -ljre_emul -lz -ObjC
+* **Other Linker Flags:** -L/usr/local/j2objc/lib -ljre_emul -lz -ObjC -force_load/usr/local/j2objc/lib/libjre_emul.a
+* 
 * **Header Search Paths:** add /usr/local/j2objc/include
 * **Library Search Paths:** /usr/local/j2objc/lib
 
