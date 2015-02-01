@@ -1,4 +1,4 @@
-# firebase-xplatform #
+## J2Objc ##
 
 The firebase-xplatform library lets you share business logic written in Java between web apps (via Google Web Toolkit), Android apps, and iOS apps (via the j2objc transpiler). The idea is to present a uniform Firebase database API to all three platforms.
 
@@ -25,16 +25,9 @@ Finally, I’m afraid that there are some third-party libraries that you need to
 
 * [awaitility.jar](http://mvnrepository.com/artifact/com.jayway.awaitility/awaitility/1.4.0)
 * [cglib-nodep.jar](http://mvnrepository.com/artifact/cglib/cglib-nodep/2.2)
-* [firebase-client-jvm.jar](https://www.firebase.com/docs/java-quickstart.html)
 * [hamcrest-core.jar](http://mvnrepository.com/artifact/org.hamcrest/hamcrest-core/1.3)
 * [hamcrest-library.jar](http://mvnrepository.com/artifact/org.hamcrest/hamcrest-library/1.3)
 * [objenesis.jar](http://mvnrepository.com/artifact/org.objenesis/objenesis/1.2)
-
-In addition, you’ll want to pick up copies of the following libraries from github:
-
-* [firebase-gwt.jar](https://github.com/thurn/firebase-xplatform/releases/)
-* [firebase-objc.zip](https://github.com/thurn/firebase-xplatform/releases/)
-* [shared-test-case.jar](https://github.com/thurn/firebase-xplatform/releases/)
 
 ### Project Structure ###
 
@@ -55,7 +48,6 @@ Copy the following jars to lib/ and then add them to your build path:
 
 * awaitility.jar
 * cglib-nodep.jar
-* firebase-client-jvm.jar
 * hamcrest-core.jar
 * hamcrest-library.jar
 * objenesis.jar
@@ -136,11 +128,8 @@ You also need to install j2objc. Go to [github.com/google/j2objc/releases](https
 * **Header Search Paths:** add /usr/local/j2objc/include
 * **Library Search Paths:** /usr/local/j2objc/lib
 
-You’ll also need to install Firebase.framework. [Grab the latest copy of it from firebase.com](https://www.firebase.com/docs/ios-quickstart.html) and drag a copy into your frameworks folder. 
-
 Go to the Build Phases tab for the NumberIncrementer target and look at the “Compile Sources” phase. You should see various .java files listed here such as Firebase.java and NumberIncrementer.java. You are going to need to keep this list up to date whenever you create a new java file in the shared project if you want it to get compiled. Also look at the “Link Binary with Libraries” section. Add the following libraries to be linked:
 
-* Firebase.framework
 * libicucore.dylib
 * libc++.dylib
 * CFNetwork.framework
@@ -160,7 +149,6 @@ Below this, where it says “Output Files”, put the following two entries:
 
 Next, right click on the NumberIncrementer project in the Project Navigator and create a new Empty file. Name the file prefixes.properties, and put the following lines in it:
 
-* `com.firebase.client: FC`
 * `com.example.incrementer.shared: NI`
 
 This will help shorten our generated class names a little bit. Now go to the Main_iPhone storyboard and add a button that says “Increment”. Hook up a Touch Up Inside connection from here to a method in ViewController.m named onIncrement.
