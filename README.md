@@ -142,6 +142,13 @@ Go to the Build Rules tab for the NumberIncrementer target. Go to Editor > Add B
 `prefixes.properties -use-arc -d ${DERIVED_FILES_DIR} -classpath`
 `${PROJECT_DIR}/j2objc-utils:${PROJECT_DIR}/src ${INPUT_FILE_PATH};`
 
+better: 
+
+```
+if [ ! -f "${J2OBJC_HOME}/j2objc" ]; then echo "J2OBJC_HOME not correctly defined in Settings.xcconfig, currently set to '${J2OBJC_HOME}'"; exit 1; fi;
+${J2OBJC_HOME}/j2objc --no-package-directories --prefixes prefixes.properties -use-arc -d ${DERIVED_FILES_DIR} -sourcepath "${PROJECT_DIR}/src" -g ${INPUT_FILE_PATH};
+```
+
 Below this, where it says “Output Files”, put the following two entries:
 
 * `${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.m`
